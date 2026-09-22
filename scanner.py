@@ -17,9 +17,25 @@ def get_ports():
             return default_ports
 
         try:
-            ports = [int(port.strip()) for port in ports_text.split(",")]
+            ports = []
+
+            for item in ports_text.split(","):
+                item = item.strip()
+
+                if "-" in item:
+                    start_text, end_text = item.split("-", 1)
+                    start_port = int(start_text.strip())
+                    end_port = int(end_text.strip())
+
+                    if start_port > end_port:
+                        raise ValueError
+
+                    ports.extend(range(start_port, end_port + 1))
+                else:
+                    ports.append(int(item))
+
         except ValueError:
-            print("Please enter numbers only, for example: 80,443,135")
+            print("Use port numbers or ranges, for example: 80,443,130-135")
             continue
 
         if all(1 <= port <= 65535 for port in ports):
