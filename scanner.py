@@ -48,6 +48,8 @@ def scan_port(port):
 
 scan_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
+start_time = datetime.now()
+
 results = [
     f"Scan time: {scan_time}",
     f"Target: {target}",
@@ -60,6 +62,12 @@ with ThreadPoolExecutor(max_workers=min(10, len(ports))) as executor:
 for message in messages:
     print(message)
     results.append(message)
+
+elapsed = (datetime.now() - start_time).total_seconds()
+summary = f"Scan completed in {elapsed:.2f} seconds"
+
+print(summary)
+results.extend(["", summary])
 
 results_file = Path(__file__).with_name("scan_results.txt")
 results_file.write_text("\n".join(results), encoding="utf-8")
