@@ -5,11 +5,14 @@ A beginner-friendly Python project that checks selected TCP ports on the local c
 ## Features
 
 - Scans localhost only (`127.0.0.1`)
-- Checks multiple TCP ports
+- Lets the user choose TCP ports to check
+- Validates port input
 - Identifies standard service names
-- Uses a one-second connection timeout
-- Saves scan results to `scan_results.txt`
-- Uses only Python’s built-in modules
+- Uses multithreading for faster scans
+- Includes a one-second connection timeout
+- Shows scan duration
+- Saves results to `scan_results.txt`
+- Uses only Python built-in modules
 
 ## Requirements
 
