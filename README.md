@@ -51,8 +51,5 @@ This project is intentionally configured to scan `127.0.0.1`, which means the co
 - datetime
 
 ## Planned improvements
-
-- Let users choose approved ports
 - Improve service detection
-- Add multithreading
 - Save reports in more formats
